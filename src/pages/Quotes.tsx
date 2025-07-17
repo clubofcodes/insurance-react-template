@@ -329,7 +329,7 @@ const Quotes = () => {
                     status: e.target.value || undefined,
                   })
                 }
-                className="px-3 py-2 border border-gray-300 rounded-md text-sm"
+                className="px-3 py-2 pr-8 border border-gray-300 rounded-md text-sm bg-white min-w-[120px]"
               >
                 <option value="">All Status</option>
                 <option value="draft">Draft</option>
@@ -346,7 +346,7 @@ const Quotes = () => {
                     insuranceType: e.target.value || undefined,
                   })
                 }
-                className="px-3 py-2 border border-gray-300 rounded-md text-sm"
+                className="px-3 py-2 pr-8 border border-gray-300 rounded-md text-sm bg-white min-w-[120px]"
               >
                 <option value="">All Types</option>
                 <option value="auto">Auto</option>
@@ -593,7 +593,7 @@ const Quotes = () => {
                     .value as typeof newQuote.insuranceType,
                 })
               }
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+              className="w-full px-3 py-2 pr-8 border border-gray-300 rounded-md text-sm bg-white"
             >
               <option value="auto">Auto</option>
               <option value="home">Home</option>
@@ -843,7 +843,7 @@ const Quotes = () => {
                     .value as typeof newQuote.insuranceType,
                 })
               }
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+              className="w-full px-3 py-2 pr-8 border border-gray-300 rounded-md text-sm bg-white"
             >
               <option value="auto">Auto Insurance</option>
               <option value="home">Home Insurance</option>

@@ -398,7 +398,7 @@ const Customers = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md text-sm"
+                className="px-3 py-2 pr-8 border border-gray-300 rounded-md text-sm bg-white min-w-[120px]"
               >
                 <option value="">All Status</option>
                 <option value="active">Active</option>
@@ -732,7 +732,7 @@ const Customers = () => {
                   status: e.target.value as "active" | "inactive",
                 })
               }
-              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              className="w-full px-3 py-2 pr-8 border border-gray-300 rounded-md bg-white"
             >
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
@@ -991,7 +991,7 @@ const Customers = () => {
                   status: e.target.value as "active" | "inactive",
                 })
               }
-              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              className="w-full px-3 py-2 pr-8 border border-gray-300 rounded-md bg-white"
             >
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>

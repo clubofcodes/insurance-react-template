@@ -82,10 +82,11 @@ const Sidebar = ({
         {/* Mobile Sidebar */}
         <div
           className={`
-          fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden
+          fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
         `}
         >
+          {/* Header */}
           <div className="flex items-center justify-between h-16 px-6 border-b">
             <div className="flex items-center space-x-2">
               <Shield className="h-8 w-8 text-blue-600" />
@@ -101,8 +102,9 @@ const Sidebar = ({
             </button>
           </div>
 
-          <div className="flex flex-col h-full">
-            <nav className="flex-1 px-4 py-6 space-y-2">
+          {/* Scrollable Navigation */}
+          <div className="flex-1 overflow-y-auto">
+            <nav className="px-4 py-6 space-y-2">
               {filteredMenuItems.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -120,33 +122,48 @@ const Sidebar = ({
                 );
               })}
             </nav>
+          </div>
 
-            <div className="p-4 border-t">
+          {/* Always visible user section and logout at bottom */}
+          <div className="border-t bg-gray-50 p-4">
+            {/* User info section */}
+            {user ? (
               <div className="flex items-center space-x-3 mb-4">
                 <div className="h-10 w-10 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-medium">
-                    {user?.firstName?.[0]}
-                    {user?.lastName?.[0]}
+                  <span className="text-blue-600 font-medium text-sm">
+                    {user?.firstName?.[0] || "U"}
+                    {user?.lastName?.[0] || "U"}
                   </span>
                 </div>
-                <div>
-                  <p className="text-sm font-medium text-gray-900">
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-medium text-gray-900 truncate">
                     {user?.firstName} {user?.lastName}
                   </p>
-                  <p className="text-xs text-gray-500 capitalize">
+                  <p className="text-xs text-gray-500 capitalize truncate">
                     {user?.role?.replace("_", " ")}
                   </p>
                 </div>
               </div>
-              <Button
-                onClick={handleLogout}
-                variant="outline"
-                className="w-full justify-start"
-              >
-                <LogOut className="h-4 w-4 mr-2" />
-                Logout
-              </Button>
-            </div>
+            ) : (
+              <div className="mb-4">
+                <p className="text-sm text-gray-500">No user logged in</p>
+              </div>
+            )}
+
+            {/* Logout button - always visible */}
+            <Button
+              onClick={() => {
+                console.log("Mobile logout button clicked"); // Debug log
+                handleLogout();
+                onToggle();
+              }}
+              variant="outline"
+              size="sm"
+              className="w-full justify-start text-red-600 border-red-200 hover:bg-red-50 hover:border-red-300 font-medium"
+            >
+              <LogOut className="h-4 w-4 mr-2" />
+              Sign Out
+            </Button>
           </div>
         </div>
       </>
@@ -235,8 +252,12 @@ const Layout = () => {
         <header className="bg-white shadow-sm border-b lg:hidden">
           <div className="flex items-center justify-between h-16 px-4">
             <button
-              onClick={() => setSidebarOpen(true)}
-              className="p-2 rounded-md hover:bg-gray-100"
+              onClick={() => {
+                console.log("Hamburger clicked, opening sidebar"); // Debug log
+                setSidebarOpen(true);
+              }}
+              className="p-2 rounded-md hover:bg-gray-100 border border-gray-300"
+              aria-label="Open sidebar menu"
             >
               <Menu className="h-5 w-5" />
             </button>

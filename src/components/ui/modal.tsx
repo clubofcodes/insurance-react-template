@@ -29,9 +29,9 @@ export const Modal = ({
         />
 
         {/* Modal */}
-        <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
+        <div className="relative bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b">
+          <div className="flex items-center justify-between p-6 border-b sticky top-0 bg-white">
             <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
             <Button variant="ghost" size="sm" onClick={onClose} className="p-2">
               <X className="h-4 w-4" />
@@ -43,7 +43,7 @@ export const Modal = ({
 
           {/* Footer */}
           {footer && (
-            <div className="flex items-center justify-end gap-3 p-6 border-t bg-gray-50">
+            <div className="flex items-center justify-end gap-3 p-6 border-t bg-gray-50 sticky bottom-0">
               {footer}
             </div>
           )}
