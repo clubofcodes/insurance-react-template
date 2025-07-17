@@ -275,7 +275,7 @@ const Dashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="col-span-3">
+        <Card className="lg:col-span-3 col-span-4">
           <CardHeader>
             <CardTitle>Quick Actions</CardTitle>
             <CardDescription>Common tasks and shortcuts</CardDescription>
